@@ -24,7 +24,7 @@ export const Vehicle = () => {
         type: "",
     })
 
-    const { capacity, driver_id, id, model, plate, type } = vehicle
+    const { capacity, model, plate, type } = vehicle
 
     useEffect(() => {
         if (state != null) {

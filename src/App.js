@@ -5,8 +5,7 @@ import './App.css';
 import {
   BrowserRouter,
   Routes,
-  Route,
-  Link,
+  Route
 } from "react-router-dom";
 import { Menu } from './Components/Navbar';
 import { Home } from './Screens/Home';
