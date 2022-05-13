@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { Menu } from './Components/Navbar';
 import { Home } from './Screens/Home';
+import { ListVehicles } from './Screens/ListVehicles';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/vehicle/driver/:idDriver" element={<About />} />
+            <Route path="/vehicle/driver/:idDriver" element={<ListVehicles />} />
             <Route path="/vehicle/:id" element={<About />} />
           </Routes>
         </div>
