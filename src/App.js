@@ -11,6 +11,7 @@ import {
 import { Menu } from './Components/Navbar';
 import { Home } from './Screens/Home';
 import { ListVehicles } from './Screens/ListVehicles';
+import { Vehicle } from './Screens/Vehicle';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/vehicle/driver/:idDriver" element={<ListVehicles />} />
-            <Route path="/vehicle/:id" element={<About />} />
+            <Route path="/vehicle/:id/:idDriver" element={<Vehicle />} />
           </Routes>
         </div>
       </BrowserRouter>
@@ -30,17 +31,5 @@ function App() {
   );
 }
 
-
-function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="about">About</Link>
-      </nav>
-    </div>
-  );
-}
 
 export default App;

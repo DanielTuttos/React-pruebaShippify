@@ -37,29 +37,44 @@ export const ListVehicles = () => {
         }
     }
 
+    const handleDelete = async (e, idVehicle) => {
+        e.preventDefault();
+        var respuesta = window.confirm("Desea eliminar el vehiculo")
+
+        if (!respuesta){
+            return
+        }
+        const url = `/vehicle/${idVehicle}`;
+        const resp = await fetchData(url, {}, "DELETE");
+        const body = await resp.json();
+        if (body.status === 'OK') {
+            consultarData();
+        }
+    }
+
     return (
         <div>
             <h1>Conductor</h1>
             <br />
 
             <div className='row g-3'>
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">Firts Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value={first_name} disabled />
+                <div className="col-sm-6">
+                    <label className="form-label">Firts Name</label>
+                    <input type="text" className="form-control" id="firstName" placeholder="" value={first_name} disabled />
 
-                    <label for="firstName" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value={email} disabled />
+                    <label className="form-label">Email</label>
+                    <input type="text" className="form-control" id="firstName" placeholder="" value={email} disabled />
                 </div>
 
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value={last_name} disabled />
+                <div className="col-sm-6">
+                    <label className="form-label">Last Name</label>
+                    <input type="text" className="form-control" id="firstName" placeholder="" value={last_name} disabled />
 
-                    <label for="firstName" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value={phone} disabled />
+                    <label className="form-label">Phone</label>
+                    <input type="text" className="form-control" id="firstName" placeholder="" value={phone} disabled />
 
                     <Button className='mt-4' color='primary'
-                        onClick={() => console.log("nuevo vehiculo")}
+                        onClick={() => navigate(`/vehicle/0/${idDriver}`)}
                     >Agregar nuevo vehiculo</Button>
                 </div>
 
@@ -88,7 +103,7 @@ export const ListVehicles = () => {
                                 <td>{ve.model}</td>
                                 <td>{ve.type}</td>
                                 <td>{ve.capacity}</td>
-                                <td><Link className='btn btn-primary' to={`/vehicle/${ve.id}`} state={ve}>Detalles</Link> <Button onClick={() => console.log("eliminar")} className='ml-4' color='danger'>Eliminar</Button> </td>
+                                <td><Link className='btn btn-primary' to={`/vehicle/${ve.id}/${idDriver}`} state={ve}>Detalles</Link> <Button onClick={(e) => handleDelete(e, ve.id)} className='ml-4' color='danger'>Eliminar</Button> </td>
                             </tr>
                         )
                     })}
