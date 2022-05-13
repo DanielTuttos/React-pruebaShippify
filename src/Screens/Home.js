@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { Button, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 import { fetchData } from '../Helper/Fecth';
 
 export const Home = () => {
 
-    const url = '/driver/alldrivers';
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -13,9 +12,9 @@ export const Home = () => {
     }, [])
 
     const consultarData = async () => {
+        const url = '/driver/alldrivers';
         const resp = await fetchData(url, null);
         const body = await resp.json();
-        // console.log(body)
         if (body.status === 'OK') {
             setData(body.data);
         }
@@ -44,7 +43,7 @@ export const Home = () => {
                                 <td>{da.last_name}</td>
                                 <td>{da.email}</td>
                                 <td>{da.phone}</td>
-                                <td> <Link className='btn btn-primary' to={`/vehicle/driver/${da.id}`}>Ver Vehiculos</Link> </td>
+                                <td> <Link className='btn btn-primary' to={`/vehicle/driver/${da.id}`} state={da}>Ver Vehiculos</Link> </td>
                             </tr>
                         )
                     })}
