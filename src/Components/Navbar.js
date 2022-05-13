@@ -1,21 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import {
     Navbar,
     NavItem,
-    NavbarToggler,
-    Collapse,
     NavLink,
-    Nav,
-    NavbarBrand
+    Nav
 } from 'reactstrap';
 
 export const Menu = () => {
-    const [isOpen, setIsOpen] = useState(false);
     return (
         <Navbar color="light" light expand="md mb-5">
-            {/* <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
-            {/* <Collapse isOpen={isOpen} navbar> */}
             <Nav className="m-auto" navbar>
                 <NavItem>
                     <Link to="/">
@@ -25,7 +19,6 @@ export const Menu = () => {
                     </Link>
                 </NavItem>
             </Nav>
-            {/* </Collapse> */}
         </Navbar>
 
     )
