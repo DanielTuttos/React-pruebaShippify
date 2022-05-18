@@ -1,6 +1,6 @@
 
 const fetchData = (endpoint, data, method = 'GET') => {
-    const baseURL = "https://backendpruebashippify.herokuapp.com/api"
+    const baseURL = "http://localhost:4000/api"
     const url = `${baseURL}${endpoint}`;
     if (method === 'GET') {
         return fetch(url)
